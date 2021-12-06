@@ -14,22 +14,30 @@ import java.util.Queue;
  * @Version 1.0
  **/
 public class Solution01 {
-
+  // 层次遍历（利用广度优先遍历的思想）
   public  ArrayList printFormTopToBottom(TreeNode root){
+    // 利用队列先进先出的规则
     Queue<TreeNode> queue = new LinkedList();
+    // 利用list存储结果
     ArrayList<Integer> res = new ArrayList<>();
     if(root==null){
       return res;
     }
-    queue.add(root)
+    // 将头节点加入到队列中
+    queue.add(root);
+    // 判断队列中是否为空
     while (!queue.isEmpty()) {
+      //取出队列中，头部元素
       TreeNode head = queue.poll();
+      // 头部元素左节点是否为空
       if (head.left != null) {
         queue.add(head.left);
       }
+      // 头部节点右节点是否为空
       if (head.right != null) {
         queue.add(head.right);
       }
+      // 将队列中头节点元素的值，加入到集合中
       res.add(head.val);
     }
 
@@ -38,4 +46,6 @@ public class Solution01 {
 
   public static void main(String[] args) {
   }
+
+
 }
